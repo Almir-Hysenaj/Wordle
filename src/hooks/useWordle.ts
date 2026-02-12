@@ -128,7 +128,36 @@ const useWordle = (solution: string | null) => {
     }
   };
 
-  return { turn, currentGuess, guesses, isCorrect, usedKeys, handleKeyup };
+  const addLetter = (letter: string) => {
+    if (/^[A-za-z]$/.test(letter) && currentGuess.length < 5) {
+      setCurrentGuess((previous) => previous + letter.toLowerCase());
+    }
+  };
+
+  const deleteLetter = () => {
+    setCurrentGuess((prev) => prev.slice(0, -1));
+  };
+
+  const submitGuess = () => {
+    if (turn > 5) return;
+    if (history.includes(currentGuess)) return;
+    if (currentGuess.length !== 5) return;
+
+    const formatted = formatGuess();
+    addNewGuess(formatted);
+  };
+
+  return {
+    turn,
+    currentGuess,
+    guesses,
+    isCorrect,
+    usedKeys,
+    handleKeyup,
+    addLetter,
+    deleteLetter,
+    submitGuess,
+  };
 };
 
 export default useWordle;

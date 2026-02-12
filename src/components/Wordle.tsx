@@ -9,8 +9,17 @@ interface WordleProps {
 }
 
 const Wordle: React.FC<WordleProps> = ({ solution }) => {
-  const { currentGuess, handleKeyup, guesses, isCorrect, turn, usedKeys } =
-    useWordle(solution);
+  const {
+    currentGuess,
+    handleKeyup,
+    guesses,
+    isCorrect,
+    turn,
+    usedKeys,
+    addLetter,
+    deleteLetter,
+    submitGuess,
+  } = useWordle(solution);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
@@ -36,7 +45,12 @@ const Wordle: React.FC<WordleProps> = ({ solution }) => {
   return (
     <>
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
-      <Keypad usedKeys={usedKeys} />
+      <Keypad
+        usedKeys={usedKeys}
+        addLetter={addLetter}
+        deleteLetter={deleteLetter}
+        submitGuess={submitGuess}
+      />
       {showModal && (
         <Modal isCorrect={isCorrect} turn={turn} solution={solution} />
       )}
