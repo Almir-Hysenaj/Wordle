@@ -15,7 +15,7 @@ const Modal: React.FC<ModalProps> = ({ isCorrect, turn, solution }) => {
         </div>
       )}
       {!isCorrect && (
-        <div className="w-max-[480px] bg-white p-10 rounded-[10px] my-[10%] mx-auto shadow-md">
+        <div className="max-w-120 bg-white p-10 rounded-[10px] my-[10%] mx-auto shadow-md">
           <h1 className="font-bold pb-7">Nevermind...</h1>
           <p className="text-rose-500 pb-5">{solution}</p>
           <p>Better luck next time</p>
