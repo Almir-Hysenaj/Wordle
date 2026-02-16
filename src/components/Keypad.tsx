@@ -5,7 +5,7 @@ interface KeypadProps {
   submitGuess: () => void;
 }
 
-const lettersArray = 'abcdefghijklmnopqrstuvwxyz'
+const lettersArray = 'qwertyuiopasdfghjklzxcvbnm'
   .split('')
   .map((key) => ({ key }));
 
